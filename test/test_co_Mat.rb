@@ -49,7 +49,7 @@ class TC_COMAT < Test::Unit::TestCase
     set1 = CoMat.new([[1,0],[3,2],[2,-1],[-1,-2],[0,1]])
     set2 = CoMat.new([[-1,0],[1,2],[0,-1],[-3,-2],[-2,1]])
 
-    d, v = lda_solver([set1, set2])
+    d, v = LdaSolver.run([set1, set2])
 
     gt_v1 = Vector[5.0/Math.sqrt(34), -3.0/Math.sqrt(34)]
     gt_v2 = Vector[0.0, 1.0]
@@ -69,7 +69,7 @@ class TC_COMAT < Test::Unit::TestCase
     # 2nd eigen value == 0
     set1 = CoMat.new([[1,2],[3,4],[5,6],[7,8]])
     set2 = CoMat.new([[1,2],[2,1],[1,2]])
-    d,v = lda_solver([set1, set2])
+    d,v = LdaSolver.run([set1, set2])
     assert_equal(true, d[0] > 0.0)
     assert_in_delta(0, d[1], 0.0001)
   end
