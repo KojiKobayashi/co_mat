@@ -150,7 +150,7 @@ def lda_solver(co_mats)
     end
 
     # sort by descent of eigen values
-    eigen_set.sort!{|a, b| b[:eigen_value] <=> a[:eigen_value]}
+    eigen_set.sort!{|a, b| b[:eigen_value].abs <=> a[:eigen_value].abs}
 
     eigen_value_vec = Vector.elements(eigen_set.map{|e| e[:eigen_value]})
     eigen_vectors = eigen_set.map{|e| e[:eigen_vector]}
